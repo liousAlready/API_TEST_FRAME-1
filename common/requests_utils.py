@@ -9,6 +9,7 @@ import re
 import requests
 import jsonpath
 from common.localconfig_utils import local_config
+from common.check_utils import CheckUtils
 
 class RequestsUtils():
     def __init__(self):
@@ -29,14 +30,7 @@ class RequestsUtils():
         elif get_info["取值方式"] == "正则取值":
             value = re.findall(get_info["取值代码"],response.text)[0]
             self.temp_variables[get_info["传值变量"]] = value
-
-        result = {
-            'code':0,  #请求是否成功的标志位
-            'response_reason':response.reason,
-            'response_code':response.status_code,
-            'response_headers':response.headers,
-            'response_body':response.text
-        }
+        result = CheckUtils(response).run_check(get_info['期望结果类型'], get_info['期望结果'])
         return result
 
     def __post(self,post_info):
@@ -54,13 +48,7 @@ class RequestsUtils():
         elif post_info["取值方式"] == "正则取值":
             value = re.findall(post_info["取值代码"],response.text)[0]
             self.temp_variables[post_info["传值变量"]] = value
-        result = {
-            'code':0,  #请求是否成功的标志位
-            'response_reason':response.reason,
-            'response_code':response.status_code,
-            'response_headers':response.headers,
-            'response_body':response.text
-        }
+        result = CheckUtils(response).run_check(post_info['期望结果类型'],post_info['期望结果'])
         return result
 
     def request(self,step_info):
