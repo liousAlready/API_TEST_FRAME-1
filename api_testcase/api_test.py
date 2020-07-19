@@ -24,6 +24,9 @@ class APITest(paramunittest.ParametrizedTestCase):
         self.case_info = case_info
 
     def test_api_common_function(self):
+        '''测试描述'''
+        self._testMethodName = self.case_info[0].get("测试用例编号")
+        self._testMethodDoc = self.case_info[0].get("测试用例名称")
         actual_result = RequestsUtils().request_by_step(self.case_info)
         self.assertTrue( actual_result.get('check_result'),actual_result.get('message') )
 
