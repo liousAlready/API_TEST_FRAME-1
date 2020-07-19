@@ -36,7 +36,7 @@ class CheckUtils():
         }
 
 
-    def no_check(self):
+    def no_check(self,check_data=None):
         return self.pass_result
 
     def check_key(self,check_data=None):
@@ -63,8 +63,6 @@ class CheckUtils():
             else:
                 res_list.append( self.fail_result )
                 wrong_items.append(check_item)
-        print( res_list )
-        print( wrong_items )
         if self.fail_result in res_list:
             return self.fail_result
         else:
@@ -89,12 +87,6 @@ class CheckUtils():
         else:
             self.fail_result['message'] = '请求的响应状态码非%s'%str(code)
             return self.fail_result
-
-
-
-
-
-
 
 if __name__=="__main__":
     # CheckUtils({"access_token":"hello","expires_":7200}).check_key("access_token,expires_in")
