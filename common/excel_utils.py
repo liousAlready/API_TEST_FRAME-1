@@ -64,4 +64,18 @@ if __name__=='__main__':
     excel_path = os.path.join( current_path,'..','samples/data/test_case.xlsx' )
     excelUtils = ExcelUtils(excel_path,"Sheet1")
     for row in excelUtils.get_sheet_data_by_dict():
-        print(  row )
+        print(row)
+    i = 0 ;
+    for row in excelUtils.get_sheet_data_by_dict():
+        if row['测试用例编号']=='case01' and row['测试用例步骤'] == 'step_01':
+            break;
+        else:
+            i = i + 1;
+    print( i+1 )
+
+    testdatas = excelUtils.get_sheet_data_by_dict()
+    for j in range(len(testdatas)):  # 0--4
+        if testdatas[j]['测试用例编号'] == 'case01' and testdatas[j]['测试用例步骤'] == 'step_01':
+            break;
+    print( j+1 )
+
