@@ -51,5 +51,6 @@ if __name__=='__main__':
     report_path = RunCase().run()
     logger.info('测试活动结束')
     EmailUtils( open(report_path,'rb').read() ,report_path).send_mail()
+    # pytest.main([])
 
 
