@@ -15,7 +15,7 @@ class LocalconfigUtils():
 
     def __init__(self, config_path=config_path):
         self.cfg = configparser.ConfigParser()
-        self.cfg.read(config_path)
+        self.cfg.read(config_path,encoding="utf-8")
 
     @property   #把方法变为属性方法
     def URL(self):

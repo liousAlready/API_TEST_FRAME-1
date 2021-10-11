@@ -54,7 +54,7 @@ class TestdataUtils():
     def get_row_num(self,case_id,case_step_name):
         for j in range(len(self.test_data)):
             if self.test_data[j]['测试用例编号'] == case_id and self.test_data[j]['测试用例步骤'] == case_step_name:
-                break;
+                break
         return j+1
 
     def get_result_id(self):
